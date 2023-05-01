@@ -1,0 +1,88 @@
+#sql is standard language for restoring,manuplation and retriving data from database
+//=================TABLES=================
+
+/*
+Customers
+customer_id	first_name	last_name	age	country
+1	John	Doe	31	USA
+2	Robert	Luna	22	USA
+3	David	Robinson	22	UK
+4	John	Reinhardt	25	UK
+5	Betty	Doe	28	UAE
+
+
+Orders
+order_id	item	amount	customer_id
+1	Keyboard	400	4
+2	Mouse	300	4
+3	Monitor	12000	3
+4	Keyboard	400	1
+5	Mousepad	250	2
+
+
+Shippings
+shipping_id	status	customer
+1	Pending	2
+2	Pending	4
+3	Delivered	3
+4	Pending	5
+5	Delivered	1
+*/
+
+//for all columns
+SELECT * FROM Customers;\
+
+//specific colunm
+SELECT age FROM Customers;
+
+//counting size of column
+SELECT count age FROM Customers;
+
+//counting distint size of column
+SELECT count(distinct(age)) FROM Customers;
+
+//specific column
+select *
+ from orders
+ where amount=400;
+ 
+ //and
+   select *
+ from shippings
+ where shipping_id=3 and customer=3;
+ 
+//or
+ select *
+ from shippings
+ where shipping_id=2 or customer=2;
+ 
+ //order by
+ select *
+ from shippings
+ order by customer;
+ 
+ //order by decending
+  select *
+ from shippings
+ order by customer desc;
+ 
+ //insert
+ insert into shippings (shipping_id,status,customer)
+values(7,pending,9);
+
+//is not null,is null
+select amount
+from orders
+where amount IS NOT Null;
+
+//update
+update customers
+set age=0
+where country='USA';
+
+//delete
+delete from customers where country='USA';
+
+//top factors
+SELECT *  FROM shippings
+limit 2;
